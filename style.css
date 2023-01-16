@@ -26,15 +26,15 @@
     background-color: darkred;
 
     display: flex;
+    flex-direction: column;
     
+}
+
+.btnRow{
+    display: flex;
 }
 
 .btn{
     background-color: white;
-    border-color: black;
-    border-width: 1rem;
-    height: 10rem;
-    width: 10rem;
-
-    flex-basis: auto;
+    flex-basis: 3rem 3rem;
 }
