@@ -14,27 +14,44 @@
 
     display: flex;
     flex-direction: column;
+
     align-self: center;
 }
 
 #calcDisplayDiv{
     background-color: aqua;
-    min-height: 10vh;
+    margin: 1rem;
+
+    flex-grow: 1;
 }
 
 #calcButtonBox{
     background-color: darkred;
+    margin: 1rem;
 
     display: flex;
     flex-direction: column;
+    flex-grow: 6;
     
 }
 
 .btnRow{
     display: flex;
+    flex-grow: 1;
 }
 
 .btn{
     background-color: white;
-    flex-basis: 3rem 3rem;
+    
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn p{
+    background-color: transparent;
+
+    text-align: center;
 }
