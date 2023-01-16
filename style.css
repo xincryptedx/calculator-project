@@ -11,9 +11,12 @@
     background-color: darkgreen;
     height: 75vh;
     width: 40vw;
+    min-height: max-content;
+    min-width: max-content;
 
     display: flex;
     flex-direction: column;
+    flex-basis: auto;
 
     align-self: center;
 }
@@ -43,7 +46,7 @@
 .btn{
     background-color: white;
     
-    flex-grow: 1;
+    flex: 1;
 
     display: flex;
     justify-content: center;
@@ -52,6 +55,7 @@
 
 .btn p{
     background-color: transparent;
+    font-size: (2vw * 2vh)/2;
 
     text-align: center;
 }
