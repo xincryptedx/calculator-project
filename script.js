@@ -7,5 +7,18 @@ var calcDisplayData = [0]; //initial value for calc dispaly should be zero
 
 //Key event handling for keyboard input
 document.addEventListener('keydown', (e) => {
-    console.log("You pressed the " + e.key + " key! Its key code is " + e.code + ".")
+
+    let key = e.key;
+
+    if (!isNaN(key)){
+        appendData(+key);
+    }
 })
+
+//Functions
+function appendData(d){
+    //Check for leading 0 in display data
+    if (calcDisplayData[0] === 0) calcDisplayData.shift();
+
+    calcDisplayData.push(d);
+}
