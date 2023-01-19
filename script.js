@@ -1,5 +1,5 @@
 //References
-calcDisplayText = document.querySelector('#calcDisplayText');
+const calcDisplayText = document.querySelector('#calcDisplayText');
 
 var calcDisplayData = [0]; //initial value for calc dispaly should be zero
 
@@ -9,10 +9,15 @@ var calcDisplayData = [0]; //initial value for calc dispaly should be zero
 document.addEventListener('keydown', (e) => {
 
     let key = e.key;
+    let code = e.code;
 
-    if (!isNaN(key)){
+    //If it is a number key
+    if (!isNaN(key) && code !=='Space'){
         appendData(+key);
+        updateDisplay();
     }
+    //If it is a function key
+
 })
 
 //Functions
@@ -21,4 +26,8 @@ function appendData(d){
     if (calcDisplayData[0] === 0) calcDisplayData.shift();
 
     calcDisplayData.push(d);
+}
+
+function updateDisplay(){
+    calcDisplayText.innerHTML = calcDisplayData;
 }
