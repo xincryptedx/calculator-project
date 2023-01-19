@@ -1,7 +1,7 @@
 //References
 const calcDisplayText = document.querySelector('#calcDisplayText');
 
-var calcDisplayData = [0]; //initial value for calc dispaly should be zero
+var calcData = [0]; //initial value for calc dispaly should be zero
 
 //Button refs go here eventually
 
@@ -19,9 +19,9 @@ document.addEventListener('keydown', (e) => {
     //If it is a function key
     console.log(e.key); //Remove later
 
-    //If it is back
+    //Backspace
     if (key === 'Backspace'){
-        calcDisplayData.pop();
+        calcData.pop();
         updateDisplay();
     }
 
@@ -30,13 +30,21 @@ document.addEventListener('keydown', (e) => {
 //Functions
 function appendData(d){
     //Check for leading 0 in display data
-    if (calcDisplayData[0] === 0) calcDisplayData.shift();
+    if (calcData[0] === 0) calcData.shift();
 
-    calcDisplayData.push(d);
+    calcData.push(d);
 }
 
 function updateDisplay(){
+    let formattedData = calcData; //removes commas
 
+    formattedData = formatData(formattedData);
 
-    calcDisplayText.innerHTML = calcDisplayData.join("");
+    calcDisplayText.innerHTML = formattedData.join("");
+}
+
+function formatData(data){
+    
+
+    return(data);
 }
