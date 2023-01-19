@@ -12,11 +12,18 @@ document.addEventListener('keydown', (e) => {
     let code = e.code;
 
     //If it is a number key
-    if (!isNaN(key) && code !=='Space'){
+    if (!isNaN(key) && code !=='Space'){ //Space is not a number, ignore it.
         appendData(+key);
         updateDisplay();
     }
     //If it is a function key
+    console.log(e.key); //Remove later
+
+    //If it is back
+    if (key === 'Backspace'){
+        calcDisplayData.pop();
+        updateDisplay();
+    }
 
 })
 
@@ -29,5 +36,7 @@ function appendData(d){
 }
 
 function updateDisplay(){
-    calcDisplayText.innerHTML = calcDisplayData;
+
+
+    calcDisplayText.innerHTML = calcDisplayData.join("");
 }
