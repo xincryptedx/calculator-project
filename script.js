@@ -50,8 +50,6 @@ function formatData(data){
     for (var i = data.length -1; i >=0; i--){ //step backwards through array
         if (!isNaN(data[i])){ //if data is number
             dCount++;
-
-            console.log(dCount + " digits detected.")
         } 
         else if (isNaN(data[i])) dCount = 0; //if not a number
         if (dCount === 3 && !isNaN(data[i -1])){ //if dcount =3, and the next data check is a number
@@ -59,9 +57,6 @@ function formatData(data){
 
             dCount = 0;
         }
-
-
-        console.log("dCount = " + dCount);
     }
 
     return data;
