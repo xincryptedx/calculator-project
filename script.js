@@ -2,6 +2,7 @@
 const calcDisplayText = document.querySelector('#calcDisplayText');
 
 var calcData = [0]; //initial value for calc dispaly should be zero
+var formattedData = [0];
 
 //Button refs go here eventually
 
@@ -17,7 +18,7 @@ document.addEventListener('keydown', (e) => {
         updateDisplay();
     }
     //If it is a function key
-    console.log(e.key); //Remove later
+    //console.log(e.key); //Remove later
 
     //Backspace
     if (key === 'Backspace'){
@@ -36,7 +37,7 @@ function appendData(d){
 }
 
 function updateDisplay(){
-    let formattedData = calcData; //removes commas
+    formattedData = [...calcData];
 
     formattedData = formatData(formattedData);
 
@@ -44,7 +45,24 @@ function updateDisplay(){
 }
 
 function formatData(data){
-    
+    var dCount = 0;
 
-    return(data);
+    for (var i = data.length -1; i >=0; i--){ //step backwards through array
+        if (!isNaN(data[i])){ //if data is number
+            dCount++;
+
+            console.log(dCount + " digits detected.")
+        } 
+        else if (isNaN(data[i])) dCount = 0; //if not a number
+        if (dCount === 3 && !isNaN(data[i -1])){ //if dcount =3, and the next data check is a number
+            data.splice(i,0,",");
+
+            dCount = 0;
+        }
+
+
+        console.log("dCount = " + dCount);
+    }
+
+    return data;
 }
