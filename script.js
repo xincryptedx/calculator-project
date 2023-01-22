@@ -4,7 +4,7 @@ const calcDisplayText = document.querySelector('#calcDisplayText');
 var calcData = [0]; //initial value for calc dispaly should be zero
 var formattedData = [0];
 
-var operatorKeys = ['/','*','+','-']
+var operatorKeys = ['/','*','+','-',]
 
 //Button refs go here eventually
 
@@ -16,8 +16,7 @@ document.addEventListener('keydown', (e) => {
 
     //If it is a number key
     if (!isNaN(key) && code !=='Space'){ //Space is not a number, ignore it.
-        appendData(+key);
-        updateDisplay();
+        numberKey(key);
     }
     //If it is a function key
     //console.log(e.key); //Remove later
@@ -40,6 +39,15 @@ document.addEventListener('keydown', (e) => {
 })
 
 //Functions
+function numberKey(key){
+    //Check for leading 0 in display data
+    if (calcData[0] === 0) calcData.shift();
+
+    calcData.push(+key);
+
+    updateDisplay();
+}
+
 function backKey(){
     calcData.pop();
     if (calcData.length === 0) calcData = [0];
@@ -65,12 +73,6 @@ function lastIsNumber(){
     return false;
 }
 
-function appendData(d){
-    //Check for leading 0 in display data
-    if (calcData[0] === 0) calcData.shift();
-
-    calcData.push(d);
-}
 
 function updateDisplay(){
     formattedData = [...calcData];
