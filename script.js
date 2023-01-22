@@ -28,11 +28,11 @@ document.addEventListener('keydown', (e) => {
     }
 
     if (key === '/'){
-        divideKey();
+        operatorKey(key);
     }
 
     if (key === '*'){
-        multiplyKey();
+        operatorKey(key);
     }
     //Subtract
 
@@ -58,20 +58,11 @@ function clearKey(){
     updateDisplay();
 }
 
-function divideKey(){
-    if (lastIsNumber()) calcData.push('/');
+function operatorKey(key){
+    if (lastIsNumber()) calcData.push(key);
     else if (!lastIsNumber()){
         calcData.pop();
-        calcData.push('/');
-    }
-    updateDisplay();
-}
-
-function multiplyKey(){
-    if (lastIsNumber()) calcData.push('*');
-    else if (!lastIsNumber()){
-        calcData.pop();
-        calcData.push('*');
+        calcData.push(key);
     }
     updateDisplay();
 }
