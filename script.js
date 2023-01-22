@@ -19,21 +19,21 @@ document.addEventListener('keydown', (e) => {
     }
     //If it is a function key
     //console.log(e.key); //Remove later
-    //Backspace
     if (key === 'Backspace'){
         backKey();
     }
-    //AC
+
     if (key === 'Delete'){
         clearKey();
     }
 
-    //Divide
     if (key === '/'){
         divideKey();
     }
-    //Multiply
 
+    if (key === '*'){
+        multiplyKey();
+    }
     //Subtract
 
     //Add
@@ -61,6 +61,16 @@ function clearKey(){
 function divideKey(){
     calcData.push('/');
     updateDisplay();
+}
+
+function multiplyKey(){
+    calcData.push('*');
+    updateDisplay();
+}
+
+function lastIsNumber(){
+    if(!isNaN(calcData[calcData.length -1])) return true;
+    return false;
 }
 
 function appendData(d){
@@ -92,8 +102,6 @@ function formatData(data){
 
             dCount = 0;
         }
-
-        //Trim if too long
     }
 
     return data;    
