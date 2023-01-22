@@ -38,6 +38,10 @@
     font-size: 1.5rem;
     text-align: right;
 
+    display: flex;
+    justify-content: flex-end;
+    white-space: nowrap;
+    overflow: hidden;
     flex-grow: 1;
 }
 
