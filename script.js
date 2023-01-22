@@ -19,25 +19,19 @@ document.addEventListener('keydown', (e) => {
     }
     //If it is a function key
     //console.log(e.key); //Remove later
-        //Backspace
-        if (key === 'Backspace'){
-            calcData.pop();
-            updateDisplay();
-        }
+    //Backspace
+    if (key === 'Backspace'){
+        backKey();
+    }
     //AC
-
-    //Factorial
-
-    //Pi
-
-    //Square Root
-
-    //Power
-
-    //Percent
+    if (key === 'Delete'){
+        clearKey();
+    }
 
     //Divide
-
+    if (key === '/'){
+        
+    }
     //Multiply
 
     //Subtract
@@ -53,6 +47,20 @@ document.addEventListener('keydown', (e) => {
 })
 
 //Functions
+function backKey(){
+    calcData.pop();
+    updateDisplay();
+}
+
+function clearKey(){
+    calcData = [0];
+    updateDisplay();
+}
+
+function divideKey(){
+
+}
+
 function appendData(d){
     //Check for leading 0 in display data
     if (calcData[0] === 0) calcData.shift();
