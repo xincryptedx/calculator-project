@@ -59,12 +59,20 @@ function clearKey(){
 }
 
 function divideKey(){
-    calcData.push('/');
+    if (lastIsNumber()) calcData.push('/');
+    else if (!lastIsNumber()){
+        calcData.pop();
+        calcData.push('/');
+    }
     updateDisplay();
 }
 
 function multiplyKey(){
-    calcData.push('*');
+    if (lastIsNumber()) calcData.push('*');
+    else if (!lastIsNumber()){
+        calcData.pop();
+        calcData.push('*');
+    }
     updateDisplay();
 }
 
