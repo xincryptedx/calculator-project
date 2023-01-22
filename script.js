@@ -4,6 +4,8 @@ const calcDisplayText = document.querySelector('#calcDisplayText');
 var calcData = [0]; //initial value for calc dispaly should be zero
 var formattedData = [0];
 
+var operatorKeys = ['/','*','+','-']
+
 //Button refs go here eventually
 
 //Key event handling for keyboard input
@@ -27,16 +29,7 @@ document.addEventListener('keydown', (e) => {
         clearKey();
     }
 
-    if (key === '/'){
-        operatorKey(key);
-    }
-
-    if (key === '*'){
-        operatorKey(key);
-    }
-    //Subtract
-
-    //Add
+    if (operatorKeys.includes(key)) operatorKey(key);
 
     //Decimal
 
