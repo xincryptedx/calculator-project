@@ -19,12 +19,36 @@ document.addEventListener('keydown', (e) => {
     }
     //If it is a function key
     //console.log(e.key); //Remove later
+        //Backspace
+        if (key === 'Backspace'){
+            calcData.pop();
+            updateDisplay();
+        }
+    //AC
 
-    //Backspace
-    if (key === 'Backspace'){
-        calcData.pop();
-        updateDisplay();
-    }
+    //Factorial
+
+    //Pi
+
+    //Square Root
+
+    //Power
+
+    //Percent
+
+    //Divide
+
+    //Multiply
+
+    //Subtract
+
+    //Add
+
+    //Decimal
+
+    //Parenthesis
+
+    //Equals
 
 })
 
@@ -48,6 +72,7 @@ function formatData(data){
     var dCount = 0;
 
     for (var i = data.length -1; i >=0; i--){ //step backwards through array
+        //Add commas
         if (!isNaN(data[i])){ //if data is number
             dCount++;
         } 
@@ -57,7 +82,9 @@ function formatData(data){
 
             dCount = 0;
         }
+
+        //Trim if too long
     }
 
-    return data;
+    return data;    
 }
