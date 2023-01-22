@@ -14,19 +14,11 @@ document.addEventListener('keydown', (e) => {
     let key = e.key;
     let code = e.code;
 
-    //If it is a number key
-    if (!isNaN(key) && code !=='Space'){ //Space is not a number, ignore it.
-        numberKey(key);
-    }
-    //If it is a function key
-    //console.log(e.key); //Remove later
-    if (key === 'Backspace'){
-        backKey();
-    }
+    if (!isNaN(key) && code !=='Space') numberKey(key);
 
-    if (key === 'Delete'){
-        clearKey();
-    }
+    if (key === 'Backspace') backKey();
+
+    if (key === 'Delete') clearKey();
 
     if (operatorKeys.includes(key)) operatorKey(key);
 
