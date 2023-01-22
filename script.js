@@ -30,7 +30,7 @@ document.addEventListener('keydown', (e) => {
 
     //Divide
     if (key === '/'){
-        
+        divideKey();
     }
     //Multiply
 
@@ -49,6 +49,7 @@ document.addEventListener('keydown', (e) => {
 //Functions
 function backKey(){
     calcData.pop();
+    if (calcData.length === 0) calcData = [0];
     updateDisplay();
 }
 
@@ -58,7 +59,8 @@ function clearKey(){
 }
 
 function divideKey(){
-
+    calcData.push('/');
+    updateDisplay();
 }
 
 function appendData(d){
