@@ -33,7 +33,7 @@ document.addEventListener('keydown', (e) => {
 //Functions
 function numberKey(key){
     //Check for leading 0 in display data
-    if (calcData[0] === 0) calcData.shift();
+    if (calcData[0] === 0 && !operatorKeys.includes(calcData[1])) calcData.shift();
 
     calcData.push(+key);
 
