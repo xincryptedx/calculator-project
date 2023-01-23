@@ -4,7 +4,7 @@ const calcDisplayText = document.querySelector('#calcDisplayText');
 var calcData = [0]; //initial value for calc dispaly should be zero
 var formattedData = [0];
 
-var operatorKeys = ['/','*','+','-',]
+var operatorKeys = ['/','*','+','-','.']
 
 //Button refs go here eventually
 
@@ -52,6 +52,7 @@ function clearKey(){
 }
 
 function operatorKey(key){
+    if (key === '.' && calcData.includes('.')) return;
     if (lastIsNumber()) calcData.push(key);
     else if (!lastIsNumber()){
         calcData.pop();
@@ -65,6 +66,11 @@ function lastIsNumber(){
     return false;
 }
 
+function numberOfOperators(){
+    let numOperators = 0;
+    calcData.forEach((e) => {if (operatorKeys.includes(e)) numOperators++});
+    return numOperators;
+}
 
 function updateDisplay(){
     formattedData = [...calcData];
