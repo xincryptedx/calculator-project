@@ -60,7 +60,7 @@ function operatorKey(key){
 }
 
 function decimalKey(){
-    if (calcData.includes('.')) return;
+    if (numberOfDecimals() > numberOfOperators()) return;
     calcData.push('.');
     updateDisplay();
 }
