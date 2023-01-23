@@ -2,7 +2,6 @@
 const calcDisplayText = document.querySelector('#calcDisplayText');
 
 var calcData = [0]; //initial value for calc dispaly should be zero
-var formattedData = [0];
 
 var operatorKeys = ['/','*','+','-']
 
@@ -92,11 +91,7 @@ function numberOfDecimals(){
 }
 
 function updateDisplay(){
-    formattedData = [...calcData];
-
-    formattedData = formatData(formattedData);
-
-    calcDisplayText.innerHTML = formattedData.join("");
+    calcDisplayText.innerHTML = calcData.join("");
 }
 
 function formatData(data){
