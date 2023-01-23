@@ -5,6 +5,8 @@ var calcData = [0]; //initial value for calc dispaly should be zero
 
 var operatorKeys = ['/','*','+','-']
 
+var digitCount = 0;
+
 //Button refs go here eventually
 
 //Key event handling for keyboard input
@@ -32,9 +34,8 @@ document.addEventListener('keydown', (e) => {
 function numberKey(key){
     //Check for leading 0 in display data
     if (calcData[0] === 0 && !operatorKeys.includes(calcData[1])) calcData.shift();
-
+    addCommas();
     calcData.push(+key);
-
     updateDisplay();
 }
 
@@ -94,21 +95,7 @@ function updateDisplay(){
     calcDisplayText.innerHTML = calcData.join("");
 }
 
-function formatData(data){
-    var dCount = 0;
-
-    for (let i = data.length -1; i >=0; i--){ //step backwards through array
-        //Add commas
-        if (!isNaN(data[i])){ //if data is number
-            dCount++;
-        } 
-        else if (isNaN(data[i])) dCount = 0; //if not a number
-        if (dCount === 3 && !isNaN(data[i -1])){ 
-            data.splice(i,0,",");
-
-            dCount = 0;
-        }
-    }
-
-    return data;    
+function addCommas(){
+    
+    return;    
 }
