@@ -70,6 +70,15 @@ function lastIsNumber(){
     return false;
 }
 
+function inDecimal(){
+    let decDetected = false;
+    for (let i = 0; i <= calcData.length; i++){
+        if (calcData[i] === '.') decDetected = true;
+        if (operatorKeys.includes(calcData[i])) decDetected = false;
+    }
+    return decDetected;
+}
+
 function numberOfOperators(){
     let numOperators = 0;
     calcData.forEach((e) => {if (operatorKeys.includes(e)) numOperators++});
@@ -93,7 +102,7 @@ function updateDisplay(){
 function formatData(data){
     var dCount = 0;
 
-    for (var i = data.length -1; i >=0; i--){ //step backwards through array
+    for (let i = data.length -1; i >=0; i--){ //step backwards through array
         //Add commas
         if (!isNaN(data[i])){ //if data is number
             dCount++;
