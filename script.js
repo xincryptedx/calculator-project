@@ -3,9 +3,7 @@ const calcDisplayText = document.querySelector('#calcDisplayText');
 
 var calcData = [0]; //initial value for calc dispaly should be zero
 
-var operatorKeys = ['/','*','+','-']
-
-var digitCount = 0;
+var operatorKeys = ['/','*','+','-'];
 
 //Button refs go here eventually
 
@@ -34,8 +32,8 @@ document.addEventListener('keydown', (e) => {
 function numberKey(key){
     //Check for leading 0 in display data
     if (calcData[0] === 0 && !operatorKeys.includes(calcData[1])) calcData.shift();
-    addCommas();
     calcData.push(+key);
+    addCommas();
     updateDisplay();
 }
 
@@ -96,6 +94,12 @@ function updateDisplay(){
 }
 
 function addCommas(){
-    
+    let digitCount = 0;
+
+    for (let i = calcData.length -1; i >= 0; i--){
+        if (!isNaN(calcData[i]) && calcData[i] != '.' && !inDecimal()) digitCount++;
+        if (isNaN(calcData[i])) digitCount = 0;
+        console.log('Step: ' + i + ' digitCount: ' + digitCount);
+    }
     return;    
 }
