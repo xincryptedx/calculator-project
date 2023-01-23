@@ -108,7 +108,7 @@ function formatData(data){
             dCount++;
         } 
         else if (isNaN(data[i])) dCount = 0; //if not a number
-        if (dCount === 3 && !isNaN(data[i -1])){ //if dcount =3, and the next data check is a number
+        if (dCount === 3 && !isNaN(data[i -1])){ 
             data.splice(i,0,",");
 
             dCount = 0;
