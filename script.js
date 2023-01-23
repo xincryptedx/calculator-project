@@ -4,7 +4,7 @@ const calcDisplayText = document.querySelector('#calcDisplayText');
 var calcData = [0]; //initial value for calc dispaly should be zero
 var formattedData = [0];
 
-var operatorKeys = ['/','*','+','-','.']
+var operatorKeys = ['/','*','+','-']
 
 //Button refs go here eventually
 
@@ -22,8 +22,7 @@ document.addEventListener('keydown', (e) => {
 
     if (operatorKeys.includes(key)) operatorKey(key);
 
-    //Decimal
-
+    if (key === '.') decimalKey();
     //Parenthesis
 
     //Equals
@@ -52,12 +51,17 @@ function clearKey(){
 }
 
 function operatorKey(key){
-    if (key === '.' && calcData.includes('.')) return;
     if (lastIsNumber()) calcData.push(key);
     else if (!lastIsNumber()){
         calcData.pop();
         calcData.push(key);
     }
+    updateDisplay();
+}
+
+function decimalKey(){
+    if (calcData.includes('.')) return;
+    calcData.push('.');
     updateDisplay();
 }
 
@@ -70,6 +74,12 @@ function numberOfOperators(){
     let numOperators = 0;
     calcData.forEach((e) => {if (operatorKeys.includes(e)) numOperators++});
     return numOperators;
+}
+
+function numberOfDecimals(){
+    let numDecimals = 0;
+    calcData.forEach((e) => {if (e === '.') numDecimals++});
+    return numDecimals;
 }
 
 function updateDisplay(){
