@@ -97,9 +97,12 @@ function addCommas(){
     let digitCount = 0;
 
     for (let i = calcData.length -1; i >= 0; i--){
-        if (!isNaN(calcData[i]) && calcData[i] != '.' && !inDecimal()) digitCount++;
         if (isNaN(calcData[i])) digitCount = 0;
-        console.log('Step: ' + i + ' digitCount: ' + digitCount);
+        if (!isNaN(calcData[i]) && calcData[i] != '.' && !inDecimal()) digitCount++;
+        if (digitCount === 3 && !isNaN(calcData[i-1])){
+            calcData.splice(i,0,',');
+            console.log("Comma inserted at: " + i);
+        }
     }
     return;    
 }
