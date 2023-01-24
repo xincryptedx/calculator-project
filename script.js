@@ -70,12 +70,24 @@ function lastIsNumber(){
     return false;
 }
 
-function inDecimal(){
+function inDecimal(minIndex = 0, maxIndex = calcData.length -1){
     let decDetected = false;
-    for (let i = 0; i <= calcData.length; i++){
+/*     for (let i = minIndex; i <= maxIndex; i++){
         if (calcData[i] === '.') decDetected = true;
-        if (operatorKeys.includes(calcData[i])) decDetected = false;
+        if (operatorKeys.includes(calcData[i])) {
+            decDetected = false;
+            console.log("Decimal detected at index: " + i + ". Breaking.")
+            break;
+        }
+    } */
+    for (let i = maxIndex; i >= minIndex; i--){
+        if (calcData[i] === '.') decDetected = true;
+        if (operatorKeys.includes(calcData[i])) {
+            break;
+        }
     }
+    
+
     return decDetected;
 }
 
