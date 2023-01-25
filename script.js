@@ -93,16 +93,37 @@ function updateDisplay(){
     calcDisplayText.innerHTML = calcData.join("");
 }
 
+function removeCommas(){
+    for (let i = 0; i <= calcData.length -1; i++){
+        if (calcData[i] === ',') calcData.splice(i,1);
+    }
+}
+
 function addCommas(){
     let digitCount = 0;
+    let commaAdded = false;
 
-    for (let i = calcData.length -1; i >= 0; i--){
+    removeCommas();
+
+/*     for (let i = calcData.length -1; i >= 0; i--){
         if (isNaN(calcData[i])) digitCount = 0;
         if (!isNaN(calcData[i]) && calcData[i] != '.' && !inDecimal()) digitCount++;
         if (digitCount === 3 && !isNaN(calcData[i-1])){
             calcData.splice(i,0,',');
             console.log("Comma inserted at: " + i);
         }
+    } */
+    for (let i = 0; i <= calcData.length -1; i++){
+        if (isNaN(calcData[i])) digitCount = 0;
+        if (!isNaN(calcData[i]) && calcData[i] != '.' && !inDecimal()) digitCount++;
+        if (digitCount === 4){
+            calcData.splice(i - 2, 0, ',');
+            console.log("Comma inserted at: " + i);
+            commaAdded = true;
+            break;
+        }
     }
+    
+
     return;    
 }
