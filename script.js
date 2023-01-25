@@ -58,7 +58,7 @@ function operatorKey(key){
 }
 
 function decimalKey(){
-    if (inDecimal()) return;
+    if (inDecimal().found === true) return;
     calcData.push('.');
     updateDisplay();
 }
@@ -68,13 +68,22 @@ function lastIsNumber(){
     return false;
 }
 
-function inDecimal(){
-    let decDetected = false;
-    for (let i = 0; i <= calcData.length; i++){
-        if (calcData[i] === '.') decDetected = true;
-        if (operatorKeys.includes(calcData[i])) decDetected = false;
+function inDecimal(index = calcData.length -1){
+    let decimalDetection = {
+        found: false,
+        indexAt: 0
     }
-    return decDetected;
+
+    for (let i = index; i >= 0; i--){
+        if (calcData[i] === '.'){
+            decimalDetection.found = true;
+            decimalDetection.indexAt = i;
+            break;
+        }
+        if (operatorKeys.includes(calcData[i])) break;
+    }
+
+    return decimalDetection;
 }
 
 function numberOfOperators(){
@@ -105,25 +114,18 @@ function addCommas(){
 
     removeCommas();
 
-/*     for (let i = calcData.length -1; i >= 0; i--){
+    for (let i = calcData.length -1; i >= 0; i--){
+        if (inDecimal(i).found === true) {
+            i = inDecimal(i).indexAt;
+            continue;
+        }
         if (isNaN(calcData[i])) digitCount = 0;
-        if (!isNaN(calcData[i]) && calcData[i] != '.' && !inDecimal()) digitCount++;
+        if (!isNaN(calcData[i]) && calcData[i] != '.') digitCount++;
         if (digitCount === 3 && !isNaN(calcData[i-1])){
             calcData.splice(i,0,',');
             console.log("Comma inserted at: " + i);
         }
-    } */
-    for (let i = 0; i <= calcData.length -1; i++){
-        if (isNaN(calcData[i])) digitCount = 0;
-        if (!isNaN(calcData[i]) && calcData[i] != '.' && !inDecimal()) digitCount++;
-        if (digitCount === 4){
-            calcData.splice(i - 2, 0, ',');
-            console.log("Comma inserted at: " + i);
-            commaAdded = true;
-            break;
-        }
     }
-    
 
     return;    
 }
