@@ -110,7 +110,6 @@ function removeCommas(){
 
 function addCommas(){
     let digitCount = 0;
-    let commaAdded = false;
 
     removeCommas();
 
@@ -124,6 +123,7 @@ function addCommas(){
         if (digitCount === 3 && !isNaN(calcData[i-1])){
             calcData.splice(i,0,',');
             console.log("Comma inserted at: " + i);
+            digitCount = 0;
         }
     }
 
