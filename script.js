@@ -2,9 +2,8 @@
 const calcDisplayText = document.querySelector('#calcDisplayText');
 
 var calcData = [0]; //initial value for calc dispaly should be zero
-var formattedData = [0];
 
-var operatorKeys = ['/','*','+','-']
+var operatorKeys = [' / ',' * ',' + ',' - '];
 
 //Button refs go here eventually
 
@@ -20,7 +19,7 @@ document.addEventListener('keydown', (e) => {
 
     if (key === 'Delete') clearKey();
 
-    if (operatorKeys.includes(key)) operatorKey(key);
+    if (operatorKeys.includes(' ' + key + ' ')) operatorKey(' ' + key + ' ');
 
     if (key === '.') decimalKey();
     //Parenthesis
@@ -31,11 +30,9 @@ document.addEventListener('keydown', (e) => {
 
 //Functions
 function numberKey(key){
-    //Check for leading 0 in display data
     if (calcData[0] === 0 && !operatorKeys.includes(calcData[1])) calcData.shift();
-
     calcData.push(+key);
-
+    addCommas();
     updateDisplay();
 }
 
@@ -60,7 +57,7 @@ function operatorKey(key){
 }
 
 function decimalKey(){
-    if (inDecimal()) return;
+    if (inDecimal().found === true) return;
     calcData.push('.');
     updateDisplay();
 }
@@ -70,18 +67,22 @@ function lastIsNumber(){
     return false;
 }
 
-function inDecimal(minIndex = 0, maxIndex = calcData.length -1){
-    let decDetected = false;
+function inDecimal(index = calcData.length -1){
+    let decimalDetection = {
+        found: false,
+        indexAt: 0
+    }
 
-    for (let i = maxIndex; i >= minIndex; i--){
-        if (calcData[i] === '.') decDetected = true;
-        if (operatorKeys.includes(calcData[i])) {
+    for (let i = index; i >= 0; i--){
+        if (calcData[i] === '.'){
+            decimalDetection.found = true;
+            decimalDetection.indexAt = i;
             break;
         }
+        if (operatorKeys.includes(calcData[i])) break;
     }
-    
 
-    return decDetected;
+    return decimalDetection;
 }
 
 function numberOfOperators(){
@@ -97,28 +98,32 @@ function numberOfDecimals(){
 }
 
 function updateDisplay(){
-    formattedData = [...calcData];
-
-    formattedData = formatData(formattedData);
-
-    calcDisplayText.innerHTML = formattedData.join("");
+    calcDisplayText.innerHTML = calcData.join("");
 }
 
-function formatData(data){
-    var dCount = 0;
+function removeCommas(){
+    for (let i = 0; i <= calcData.length -1; i++){
+        if (calcData[i] === ',') calcData.splice(i,1);
+    }
+}
 
-    for (let i = data.length -1; i >=0; i--){ //step backwards through array
-        //Add commas
-        if (!isNaN(data[i])){ //if data is number
-            dCount++;
-        } 
-        else if (isNaN(data[i])) dCount = 0; //if not a number
-        if (dCount === 3 && !isNaN(data[i -1])){ 
-            data.splice(i,0,",");
+function addCommas(){
+    let digitCount = 0;
 
-            dCount = 0;
+    removeCommas();
+
+    for (let i = calcData.length -1; i >= 0; i--){
+        if (inDecimal(i).found === true) {
+            i = inDecimal(i).indexAt;
+            continue;
+        }
+        if (isNaN(calcData[i])) digitCount = 0;
+        if (!isNaN(calcData[i]) && calcData[i] != '.') digitCount++;
+        if (digitCount === 3 && !isNaN(calcData[i-1])){
+            calcData.splice(i,0,',');
+            digitCount = 0;
         }
     }
 
-    return data;    
+    return;    
 }
