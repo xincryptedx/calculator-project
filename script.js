@@ -3,7 +3,7 @@ const calcDisplayText = document.querySelector('#calcDisplayText');
 
 var calcData = [0]; //initial value for calc dispaly should be zero
 
-var operatorKeys = ['/','*','+','-'];
+var operatorKeys = [' / ',' * ',' + ',' - '];
 
 //Button refs go here eventually
 
@@ -19,7 +19,7 @@ document.addEventListener('keydown', (e) => {
 
     if (key === 'Delete') clearKey();
 
-    if (operatorKeys.includes(key)) operatorKey(key);
+    if (operatorKeys.includes(' ' + key + ' ')) operatorKey(' ' + key + ' ');
 
     if (key === '.') decimalKey();
     //Parenthesis
@@ -30,7 +30,6 @@ document.addEventListener('keydown', (e) => {
 
 //Functions
 function numberKey(key){
-    //Check for leading 0 in display data
     if (calcData[0] === 0 && !operatorKeys.includes(calcData[1])) calcData.shift();
     calcData.push(+key);
     addCommas();
@@ -122,7 +121,6 @@ function addCommas(){
         if (!isNaN(calcData[i]) && calcData[i] != '.') digitCount++;
         if (digitCount === 3 && !isNaN(calcData[i-1])){
             calcData.splice(i,0,',');
-            console.log("Comma inserted at: " + i);
             digitCount = 0;
         }
     }
