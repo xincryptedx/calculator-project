@@ -12,8 +12,8 @@
     height: 70vh;
     width: 40vw;
 
-    max-height: 700px;
-    max-width: 400px;
+    max-height: 450px;
+    max-width: 375px;
     min-height: 300px;
     min-width: 100px;
     display: flex;
@@ -63,6 +63,7 @@
 
 .btn{
     background-color: white;
+
     
     flex: 1;
     display: flex;
