@@ -22,10 +22,8 @@ document.addEventListener('keydown', (e) => {
     if (operatorKeys.includes(' ' + key + ' ')) operatorKey(' ' + key + ' ');
 
     if (key === '.') decimalKey();
-    //Parenthesis
 
-    //Equals
-
+    if (key === 'Enter') equalsKey();
 })
 
 //Functions
@@ -60,6 +58,27 @@ function decimalKey(){
     if (inDecimal().found === true) return;
     calcData.push('.');
     updateDisplay();
+}
+
+function equalsKey(){
+    let num1 = '';
+    let num2 = '';
+    let result = 0;
+    let beginIndex = 0;
+    let endIndex = 0;
+
+    for (i = 0; i <= calcData.length - 1; i++){
+        if (calcData[i] === ' * ') { 
+        getNumsForOperation(num1,num2,beginIndex,endIndex,i);
+        console.log('* found! Index: ' + i);
+        }
+    }
+}
+
+function getNumsForOperation(num1, num2, beginIndex, endIndex, operatorIndex){
+    for (i = operatorIndex - 1; i >= 0; i--){
+        if (!isNaN(calcData[i])) num1 = calcData[i].toString() + num1;
+    }
 }
 
 function lastIsNumber(){
