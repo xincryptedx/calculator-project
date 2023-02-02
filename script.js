@@ -3,6 +3,7 @@ const calcDisplayText = document.querySelector('#calcDisplayText');
 const backBtn = document.getElementById('backBtn');
 const clearBtn = document.getElementById('clearBtn');
 const divideBtn = document.getElementById('divideBtn');
+const multiplyBtn = document.getElementById('multiplyBtn');
 
 var calcData = [0]; //initial value for calc dispaly should be zero
 
@@ -19,6 +20,7 @@ const foundNumbers ={
 backBtn.onclick = () => backKey();
 clearBtn.onclick = () => clearKey();
 divideBtn.onclick = () => operatorKey(' / ');
+multiplyBtn.onclick = () => operatorKey(' * ');
 
 //Key event handling for keyboard input
 document.addEventListener('keydown', (e) => {
