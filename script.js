@@ -1,9 +1,15 @@
-//References
 const calcDisplayText = document.querySelector('#calcDisplayText');
 
 var calcData = [0]; //initial value for calc dispaly should be zero
 
 var operatorKeys = [' / ',' * ',' + ',' - '];
+
+const foundNumbers ={
+    num1:'',
+    num2:'',
+    beginIndex:0,
+    endIndex:0
+}
 
 //Button refs go here eventually
 
@@ -69,16 +75,21 @@ function equalsKey(){
 
     for (i = 0; i <= calcData.length - 1; i++){
         if (calcData[i] === ' * ') { 
-        getNumsForOperation(num1,num2,beginIndex,endIndex,i);
+        getNumsForOperation(i);
         console.log('* found! Index: ' + i);
         }
     }
 }
 
-function getNumsForOperation(num1, num2, beginIndex, endIndex, operatorIndex){
-    for (i = operatorIndex - 1; i >= 0; i--){
-        if (!isNaN(calcData[i])) num1 = calcData[i].toString() + num1;
+function getNumsForOperation(operatorIndex){
+    for (let i = operatorIndex - 1; i >= 0; i--){
+        if (!isNaN(calcData[i])) {
+            foundNumbers.num1 = calcData[i].toString() + foundNumbers.num1;
+            foundNumbers.beginIndex = i;
+        }
+        if (operatorKeys.includes(calcData[i])) break;
     }
+    return;
 }
 
 function lastIsNumber(){
