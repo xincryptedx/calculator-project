@@ -1,5 +1,7 @@
 const calcDisplayText = document.querySelector('#calcDisplayText');
 
+const backBtn = document.getElementById('backBtn');
+
 var calcData = [0]; //initial value for calc dispaly should be zero
 
 var operatorKeys = [' / ',' * ',' + ',' - '];
@@ -11,7 +13,8 @@ const foundNumbers ={
     endIndex:0
 }
 
-//Button refs go here eventually
+//Button click events
+backBtn.onclick = () => backKey();
 
 //Key event handling for keyboard input
 document.addEventListener('keydown', (e) => {
