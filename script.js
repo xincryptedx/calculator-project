@@ -73,7 +73,8 @@ function equalsKey(){
         if (calcData[i] === ' * ') { 
             getNumsForOperation(i);
             result = parseFloat(foundNumbers.num1) * parseFloat(foundNumbers.num2);
-            console.log(result);
+            calcData.splice(foundNumbers.beginIndex, foundNumbers.endIndex 
+                - foundNumbers.beginIndex + 1, result);
         }
     }
 }
