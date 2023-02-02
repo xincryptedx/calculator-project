@@ -29,7 +29,10 @@ document.addEventListener('keydown', (e) => {
 
     if (key === '.') decimalKey();
 
-    if (key === 'Enter') equalsKey();
+    if (key === 'Enter'){
+        equalsKey();
+        updateDisplay();
+    }
 })
 
 //Functions
@@ -75,6 +78,8 @@ function equalsKey(){
             result = parseFloat(foundNumbers.num1) * parseFloat(foundNumbers.num2);
             calcData.splice(foundNumbers.beginIndex, foundNumbers.endIndex 
                 - foundNumbers.beginIndex + 1, result);
+            equalsKey();
+            break;
         }
     }
 }
