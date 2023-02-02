@@ -30,6 +30,8 @@ const foundNumbers ={
     endIndex:0
 }
 
+resultFormatter = new Intl.NumberFormat('en-US');
+
 //Button click events
 backBtn.onclick = () => backKey();
 clearBtn.onclick = () => clearKey();
@@ -40,6 +42,7 @@ subtractBtn.onclick = () => operatorKey(' - ');
 decimalBtn.onclick = () => decimalKey();
 equalsBtn.onclick = () =>{
     equalsKey();
+    calcData[0] = resultFormatter.format(calcData[0]);
     updateDisplay();
 }
 btn0.onclick = () => numberKey(0);
@@ -71,6 +74,7 @@ document.addEventListener('keydown', (e) => {
 
     if (key === 'Enter'){
         equalsKey();
+        calcData[0] = resultFormatter.format(calcData[0]);
         updateDisplay();
     }
 })
