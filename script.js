@@ -73,11 +73,20 @@ function equalsKey(){
     let result = 0;
 
     for (i = 0; i <= calcData.length - 1; i++){
-        if (calcData[i] === ' * ') { 
+        if (calcData[i] === ' * ' || calcData[i] === ' / ') { 
             getNumsForOperation(i);
-            result = parseFloat(foundNumbers.num1) * parseFloat(foundNumbers.num2);
-            calcData.splice(foundNumbers.beginIndex, foundNumbers.endIndex 
-                - foundNumbers.beginIndex + 1, result);
+            if (calcData[i] === ' * ') result = parseFloat(foundNumbers.num1) * parseFloat(foundNumbers.num2);
+            if (calcData[i] === ' / ') result = parseFloat(foundNumbers.num1) / parseFloat(foundNumbers.num2);
+            updateAfterOperation(result);
+            equalsKey();
+            break;
+        }
+        if (calcData.includes(' * ') || calcData.includes(' / ')) continue;
+        if (calcData[i] === ' + ' || calcData[i] === ' - ') { 
+            getNumsForOperation(i);
+            if (calcData[i] === ' + ') result = parseFloat(foundNumbers.num1) + parseFloat(foundNumbers.num2);
+            if (calcData[i] === ' - ') result = parseFloat(foundNumbers.num1) - parseFloat(foundNumbers.num2);
+            updateAfterOperation(result);
             equalsKey();
             break;
         }
@@ -87,14 +96,14 @@ function equalsKey(){
 function getNumsForOperation(operatorIndex){
     clearFoundNumbers();
     for (let i = operatorIndex - 1; i >= 0; i--){
-        if (!isNaN(calcData[i])){
+        if (!isNaN(calcData[i]) || calcData[i] === '.'){
             foundNumbers.num1 = calcData[i].toString() + foundNumbers.num1;
             foundNumbers.beginIndex = i;
         }
         if (operatorKeys.includes(calcData[i])) break;
     }
     for (let i = operatorIndex + 1; i <= calcData.length -1; i++){
-        if (!isNaN(calcData[i])){
+        if (!isNaN(calcData[i]) || calcData[i] === '.'){
             foundNumbers.num2 += calcData[i].toString();
             foundNumbers.endIndex = i;
         }
@@ -102,6 +111,12 @@ function getNumsForOperation(operatorIndex){
     }
 
     return;
+}
+
+function updateAfterOperation(result){
+    calcData.splice(foundNumbers.beginIndex, foundNumbers.endIndex 
+        - foundNumbers.beginIndex + 1, result);
+    console.log(calcData);
 }
 
 function clearFoundNumbers(){
