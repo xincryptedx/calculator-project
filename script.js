@@ -67,29 +67,42 @@ function decimalKey(){
 }
 
 function equalsKey(){
-    let num1 = '';
-    let num2 = '';
     let result = 0;
-    let beginIndex = 0;
-    let endIndex = 0;
 
     for (i = 0; i <= calcData.length - 1; i++){
         if (calcData[i] === ' * ') { 
-        getNumsForOperation(i);
-        console.log('* found! Index: ' + i);
+            getNumsForOperation(i);
+            result = parseFloat(foundNumbers.num1) * parseFloat(foundNumbers.num2);
+            console.log(result);
         }
     }
 }
 
 function getNumsForOperation(operatorIndex){
+    clearFoundNumbers();
     for (let i = operatorIndex - 1; i >= 0; i--){
-        if (!isNaN(calcData[i])) {
+        if (!isNaN(calcData[i])){
             foundNumbers.num1 = calcData[i].toString() + foundNumbers.num1;
             foundNumbers.beginIndex = i;
         }
         if (operatorKeys.includes(calcData[i])) break;
     }
+    for (let i = operatorIndex + 1; i <= calcData.length -1; i++){
+        if (!isNaN(calcData[i])){
+            foundNumbers.num2 += calcData[i].toString();
+            foundNumbers.endIndex = i;
+        }
+        if (operatorKeys.includes(calcData[i])) break;
+    }
+
     return;
+}
+
+function clearFoundNumbers(){
+    foundNumbers.num1 = '';
+    foundNumbers.num2 = '';
+    foundNumbers.beginIndex = 0;
+    foundNumbers.endIndex = 0;
 }
 
 function lastIsNumber(){
