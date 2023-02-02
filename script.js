@@ -4,6 +4,8 @@ const backBtn = document.getElementById('backBtn');
 const clearBtn = document.getElementById('clearBtn');
 const divideBtn = document.getElementById('divideBtn');
 const multiplyBtn = document.getElementById('multiplyBtn');
+const addBtn = document.getElementById('addBtn');
+const subtractBtn = document.getElementById('subtractBtn');
 
 var calcData = [0]; //initial value for calc dispaly should be zero
 
@@ -21,6 +23,8 @@ backBtn.onclick = () => backKey();
 clearBtn.onclick = () => clearKey();
 divideBtn.onclick = () => operatorKey(' / ');
 multiplyBtn.onclick = () => operatorKey(' * ');
+addBtn.onclick = () => operatorKey(' + ');
+subtractBtn.onclick = () => operatorKey(' - ');
 
 //Key event handling for keyboard input
 document.addEventListener('keydown', (e) => {
