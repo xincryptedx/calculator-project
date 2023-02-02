@@ -6,6 +6,8 @@ const divideBtn = document.getElementById('divideBtn');
 const multiplyBtn = document.getElementById('multiplyBtn');
 const addBtn = document.getElementById('addBtn');
 const subtractBtn = document.getElementById('subtractBtn');
+const decimalBtn = document.getElementById('decimalBtn');
+const equalsBtn = document.getElementById('equalsBtn');
 
 var calcData = [0]; //initial value for calc dispaly should be zero
 
@@ -25,6 +27,11 @@ divideBtn.onclick = () => operatorKey(' / ');
 multiplyBtn.onclick = () => operatorKey(' * ');
 addBtn.onclick = () => operatorKey(' + ');
 subtractBtn.onclick = () => operatorKey(' - ');
+decimalBtn.onclick = () => decimalKey();
+equalsBtn.onclick = () =>{
+    equalsKey();
+    updateDisplay();
+}
 
 //Key event handling for keyboard input
 document.addEventListener('keydown', (e) => {
