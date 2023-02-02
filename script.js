@@ -8,6 +8,16 @@ const addBtn = document.getElementById('addBtn');
 const subtractBtn = document.getElementById('subtractBtn');
 const decimalBtn = document.getElementById('decimalBtn');
 const equalsBtn = document.getElementById('equalsBtn');
+const btn0 = document.getElementById('0Btn');
+const btn1 = document.getElementById('1Btn');
+const btn2 = document.getElementById('2Btn');
+const btn3 = document.getElementById('3Btn');
+const btn4 = document.getElementById('4Btn');
+const btn5 = document.getElementById('5Btn');
+const btn6 = document.getElementById('6Btn');
+const btn7 = document.getElementById('7Btn');
+const btn8 = document.getElementById('8Btn');
+const btn9 = document.getElementById('9Btn');
 
 var calcData = [0]; //initial value for calc dispaly should be zero
 
@@ -32,6 +42,16 @@ equalsBtn.onclick = () =>{
     equalsKey();
     updateDisplay();
 }
+btn0.onclick = () => numberKey(0);
+btn1.onclick = () => numberKey(1);
+btn2.onclick = () => numberKey(2);
+btn3.onclick = () => numberKey(3);
+btn4.onclick = () => numberKey(4);
+btn5.onclick = () => numberKey(5);
+btn6.onclick = () => numberKey(6);
+btn7.onclick = () => numberKey(7);
+btn8.onclick = () => numberKey(8);
+btn9.onclick = () => numberKey(9);
 
 //Key event handling for keyboard input
 document.addEventListener('keydown', (e) => {
