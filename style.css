@@ -1,5 +1,7 @@
 body{
     background-color: rgb(34, 34, 34);
+    display: flex;
+    flex-direction: column;
 }
 
 h1{
@@ -11,10 +13,13 @@ a{
     color:greenyellow;
 }
 
+#titleDiv{
+    margin-bottom: 4rem;
+}
+
 #content{
     display: flex;
-    flex-direction: column;
-}
+    flex-direction: column;}
 
 #calcBackDiv{
     background-color: #B85042;
