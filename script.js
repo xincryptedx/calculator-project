@@ -132,7 +132,15 @@ function equalsKey(){
         if (calcData[i] === ' * ' || calcData[i] === ' / ') { 
             getNumsForOperation(i);
             if (calcData[i] === ' * ') result = parseFloat(foundNumbers.num1) * parseFloat(foundNumbers.num2);
-            if (calcData[i] === ' / ') result = parseFloat(foundNumbers.num1) / parseFloat(foundNumbers.num2);
+            if (calcData[i] === ' / ') {
+                if (foundNumbers.num2 === '0') { //Must be a string due to how getNumsForOperation() works.
+                    calcData = ['Cannot divide by zero.'];
+                    updateDisplay();
+                    //calcData = [0];
+                    break;
+                }
+                result = parseFloat(foundNumbers.num1) / parseFloat(foundNumbers.num2);
+            }
             updateAfterOperation(result);
             equalsKey();
             break;
