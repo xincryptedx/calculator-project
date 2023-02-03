@@ -1,5 +1,7 @@
 const calcDisplayText = document.querySelector('#calcDisplayText');
 
+const buttons = document.querySelectorAll('.btn:not(.empty)');
+
 const backBtn = document.getElementById('backBtn');
 const clearBtn = document.getElementById('clearBtn');
 const divideBtn = document.getElementById('divideBtn');
