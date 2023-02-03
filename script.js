@@ -81,6 +81,15 @@ document.addEventListener('keydown', (e) => {
     }
 })
 
+//Highlight Buttons on Mouseover
+buttons.forEach(function(btn){
+    btn.addEventListener('mouseenter', () => btn.classList.add('highlight'))
+});
+
+buttons.forEach(function(btn){
+    btn.addEventListener('mouseleave', () => btn.classList.remove('highlight'))
+});
+
 //Functions
 function numberKey(key){
     if (calcData[0] === 0 && !operatorKeys.includes(calcData[1])) calcData.shift();
