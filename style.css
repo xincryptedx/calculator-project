@@ -8,7 +8,7 @@
 }
 
 #calcBackDiv{
-    background-color: darkgreen;
+    background-color: #B85042;
     height: 70vh;
     width: 40vw;
     border-radius: 15px;
@@ -24,7 +24,7 @@
 }
 
 #calcDisplayDiv{
-    background-color: aqua;
+    background-color: #E7E8D1;
     margin: 1rem;
     border-radius: 10px;
 
@@ -69,7 +69,7 @@
 }
 
 .btn{
-    background-color: white;
+    background-color: #A7BEAE;
     border-radius: 20%;
     margin: 3px;
 
@@ -78,6 +78,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.btn.empty{
+    background-color: rgb(145, 145, 145);
 }
 
 .btn p{
