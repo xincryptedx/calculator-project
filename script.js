@@ -30,8 +30,6 @@ const foundNumbers ={
     endIndex:0
 }
 
-resultFormatter = new Intl.NumberFormat('en-US');
-
 //Button click events
 backBtn.onclick = () => backKey();
 clearBtn.onclick = () => clearKey();
@@ -42,6 +40,8 @@ subtractBtn.onclick = () => operatorKey(' - ');
 decimalBtn.onclick = () => decimalKey();
 equalsBtn.onclick = () =>{
     equalsKey();
+    splitResult();
+    addCommas();
     updateDisplay();
 }
 btn0.onclick = () => numberKey(0);
@@ -73,6 +73,8 @@ document.addEventListener('keydown', (e) => {
 
     if (key === 'Enter'){
         equalsKey();
+        splitResult();
+        addCommas();
         updateDisplay();
     }
 })
@@ -166,6 +168,11 @@ function clearFoundNumbers(){
     foundNumbers.num2 = '';
     foundNumbers.beginIndex = 0;
     foundNumbers.endIndex = 0;
+}
+
+function splitResult(){
+    let result = calcData[0].toString();
+    calcData = result.split('');
 }
 
 function lastIsNumber(){
