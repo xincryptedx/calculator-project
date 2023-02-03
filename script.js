@@ -232,6 +232,8 @@ function numberOfDecimals(){
 
 function updateDisplay(){
     calcDisplayText.innerHTML = calcData.join("");
+
+    if (calcData[0] === 'C') calcData = [0];
 }
 
 function removeCommas(){
