@@ -101,6 +101,7 @@ function numberKey(key){
 function backKey(){
     calcData.pop();
     if (calcData.length === 0) calcData = [0];
+    addCommas();
     updateDisplay();
 }
 
