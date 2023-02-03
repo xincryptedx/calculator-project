@@ -89,3 +89,7 @@
     font-size: 1.5rem;
     text-align: center;
 }
+
+.btn.highlight{
+    background-color: #5a9b6d;
+}
