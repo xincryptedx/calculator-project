@@ -1,5 +1,14 @@
-*{
+body{
     background-color: rgb(34, 34, 34);
+}
+
+h1{
+    color: #5a9b6d;
+    text-align: center;
+}
+
+a{
+    color:greenyellow;
 }
 
 #content{
@@ -92,4 +101,27 @@
 
 .btn.highlight{
     background-color: #5a9b6d;
+}
+
+footer{
+    text-align: center;
+    font-size: small;
+    background-color: rgb(85, 85, 85);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#footerContent > p{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#footerContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
