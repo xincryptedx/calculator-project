@@ -92,11 +92,11 @@ buttons.forEach(function(btn){
 
 //Functions
 function numberKey(key){
-    if (calcData[0] === 0 && !operatorKeys.includes(calcData[1])) calcData.shift();
+    if (parseInt(calcData[0]) === 0 && !operatorKeys.includes(calcData[1])) calcData.shift();
     calcData.push(+key);
     addCommas();
     updateDisplay();
-}
+} 
 
 function backKey(){
     calcData.pop();
