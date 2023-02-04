@@ -128,6 +128,8 @@ function decimalKey(){
 function equalsKey(){
     let result = 0;
 
+    //if (numberOfOperators() === 0) return;
+
     for (i = 0; i <= calcData.length - 1; i++){
         if (calcData[i] === ' * ' || calcData[i] === ' / ') { 
             getNumsForOperation(i);
@@ -191,8 +193,10 @@ function clearFoundNumbers(){
 }
 
 function splitResult(){
+    if (calcData.length === 1){
     let result = calcData[0].toString();
     calcData = result.split('');
+    }
 }
 
 function lastIsNumber(){
