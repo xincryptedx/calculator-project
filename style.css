@@ -85,8 +85,8 @@ a{
 .btn{
     background-color: #A7BEAE;
     border-radius: 20%;
+    border-style: solid;
     margin: 3px;
-
     
     flex: 1;
     display: flex;
@@ -96,12 +96,17 @@ a{
 
 .btn.empty{
     background-color: rgb(145, 145, 145);
+    border-style: hidden;
 }
 
 .btn p{
     background-color: transparent;
     font-size: 1.5rem;
     text-align: center;
+}
+
+.btn.operator{
+    background-color: #7d9dcc;
 }
 
 .btn.highlight{
