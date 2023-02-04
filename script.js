@@ -128,7 +128,10 @@ function decimalKey(){
 function equalsKey(){
     let result = 0;
 
-    //if (numberOfOperators() === 0) return;
+    if (operatorKeys.includes(calcData[calcData.length-1])){
+        calcData.pop();
+        return;
+    }
 
     for (i = 0; i <= calcData.length - 1; i++){
         if (calcData[i] === ' * ' || calcData[i] === ' / ') { 
@@ -138,7 +141,6 @@ function equalsKey(){
                 if (foundNumbers.num2 === '0') { //Must be a string due to how getNumsForOperation() works.
                     calcData = ['Cannot divide by zero.'];
                     updateDisplay();
-                    //calcData = [0];
                     break;
                 }
                 result = parseFloat(foundNumbers.num1) / parseFloat(foundNumbers.num2);
